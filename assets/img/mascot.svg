@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 360" shape-rendering="crispEdges" role="img" aria-label="น้องบอทหัวเมฆ หน้าจอเทอร์มินัล">
   <defs>
     <linearGradient id="nBlue" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#5B8BFF"/><stop offset="1" stop-color="#4A7DFF"/>
+      <stop offset="0" stop-color="#5ED6DD"/><stop offset="1" stop-color="#2A9AA1"/>
     </linearGradient>
   </defs>
 
@@ -9,7 +9,7 @@
   <ellipse cx="180" cy="318" rx="78" ry="12" fill="#E9DCC6"/>
 
   <!-- ===== หัวเมฆ (bumps ซ้อนกันให้เป็นก้อนเมฆ blocky) ===== -->
-  <g fill="url(#nBlue)" stroke="#2B4CBF" stroke-width="7" stroke-linejoin="round">
+  <g fill="url(#nBlue)" stroke="#2B2A4C" stroke-width="7" stroke-linejoin="round">
     <!-- ฐานหัว -->
     <rect x="76" y="96" width="208" height="134" rx="46"/>
     <!-- ปุ่มก้อนเมฆด้านบน -->
@@ -24,34 +24,34 @@
   </g>
 
   <!-- ===== หน้าจอใบหน้า ===== -->
-  <rect x="126" y="138" width="108" height="66" rx="14" fill="#111827" stroke="#0B0F1A" stroke-width="4"/>
+  <rect x="126" y="138" width="108" height="66" rx="14" fill="#2B2A4C" stroke="#1F1E3A" stroke-width="4"/>
 
   <!-- สัญลักษณ์ terminal >_ สีฟ้าอ่อน -->
   <g>
     <!-- เครื่องหมายมากกว่า > -->
-    <path d="M152 154 L174 171 L152 188" stroke="#A8F0FF" stroke-width="7" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+    <path d="M152 154 L174 171 L152 188" stroke="#FFD93D" stroke-width="7" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
     <!-- ขีดล่าง _ -->
-    <rect x="182" y="185" width="24" height="7" rx="1.5" fill="#A8F0FF"/>
+    <rect x="182" y="185" width="24" height="7" rx="1.5" fill="#FFD93D"/>
     <!-- เคอร์เซอร์กะพริบ -->
-    <rect x="212" y="150" width="8" height="20" rx="2" fill="#A8F0FF" opacity="0.85"/>
+    <rect x="212" y="150" width="8" height="20" rx="2" fill="#FFD93D" opacity="0.85"/>
   </g>
 
   <!-- ===== แขน ===== -->
-  <g fill="url(#nBlue)" stroke="#2B4CBF" stroke-width="6" stroke-linejoin="round">
+  <g fill="url(#nBlue)" stroke="#2B2A4C" stroke-width="6" stroke-linejoin="round">
     <rect x="112" y="238" width="20" height="44" rx="10" transform="rotate(14 122 260)"/>
     <rect x="228" y="238" width="20" height="44" rx="10" transform="rotate(-14 238 260)"/>
   </g>
 
   <!-- ===== ลำตัว ===== -->
-  <rect x="136" y="230" width="88" height="58" rx="22" fill="url(#nBlue)" stroke="#2B4CBF" stroke-width="7"/>
+  <rect x="136" y="230" width="88" height="58" rx="22" fill="url(#nBlue)" stroke="#2B2A4C" stroke-width="7"/>
   <!-- >_ เล็กที่อก -->
   <g>
-    <path d="M162 250 L176 264 L162 278" stroke="#CFF6FF" stroke-width="5" fill="none" stroke-linecap="square"/>
-    <rect x="182" y="276" width="16" height="5" rx="1.5" fill="#CFF6FF"/>
+    <path d="M162 250 L176 264 L162 278" stroke="#FF6B6B" stroke-width="5" fill="none" stroke-linecap="square"/>
+    <rect x="182" y="276" width="16" height="5" rx="1.5" fill="#FF6B6B"/>
   </g>
 
   <!-- ===== ขา ===== -->
-  <g fill="url(#nBlue)" stroke="#2B4CBF" stroke-width="6" stroke-linejoin="round">
+  <g fill="url(#nBlue)" stroke="#2B2A4C" stroke-width="6" stroke-linejoin="round">
     <rect x="150" y="288" width="24" height="26" rx="10"/>
     <rect x="186" y="288" width="24" height="26" rx="10"/>
   </g>
