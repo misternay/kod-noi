@@ -319,5 +319,15 @@
     // ปลดล็อกระบบเสียงเมื่อมีการแตะครั้งแรก
     var unlock = function () { audio.unlock(); document.removeEventListener('pointerdown', unlock); };
     document.addEventListener('pointerdown', unlock);
+
+    /* ตารางบนมือถือ: ฝังชื่อคอลัมน์ลงในแต่ละ td เพื่อแสดงเป็นการ์ด (ดู CSS ส่วน .tablewrap)
+       ถ้าไม่มี JS ตารางจะเลื่อนแนวนอนได้ตามเดิม */
+    ui.$$('.tablewrap table').forEach(function (t) {
+      var heads = ui.$$('thead th', t).map(function (th) { return th.textContent.trim(); });
+      if (!heads.length) return;
+      ui.$$('tbody tr', t).forEach(function (tr) {
+        ui.$$('td', tr).forEach(function (td, i) { if (heads[i]) td.dataset.label = heads[i]; });
+      });
+    });
   });
 })();

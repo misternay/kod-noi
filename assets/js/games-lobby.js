@@ -63,14 +63,30 @@
     if (window.KN_ON_TAB) window.KN_ON_TAB(name);
     var anchor = document.getElementById('playTop');
     if (anchor) {
-      try { window.scrollTo({ top: Math.max(0, anchor.offsetTop - 90), behavior: 'smooth' }); } catch (e) {}
+      /* เผื่อระยะ header ตามความสูงจริง ณ ตอนนั้น (มือถือ header สูงกว่าจอใหญ่) */
+      var hdr = document.querySelector('.top__in');
+      var off = (hdr ? hdr.getBoundingClientRect().height : 70) + 18;
+      try { window.scrollTo({ top: Math.max(0, anchor.offsetTop - off), behavior: 'smooth' }); } catch (e) {}
     }
   }
   window.KN_GO_TAB = goTab;
   window.goTab = goTab; /* ให้โค้ดเดิมเรียก goTab(...) ได้เลย */
 
-  ui.$$('.tab').forEach(function (t) {
+  var tabEls = ui.$$('.tab');
+  tabEls.forEach(function (t) {
     t.addEventListener('click', function () { goTab(t.dataset.tab); });
+  });
+
+  /* คีย์บอร์ด: ลูกศรซ้าย–ขวาเลื่อนห้องตามแบบฉบับ tablist */
+  tabEls.forEach(function (t, i) {
+    t.addEventListener('keydown', function (e) {
+      var d = (e.key === 'ArrowRight') ? 1 : (e.key === 'ArrowLeft') ? -1 : 0;
+      if (!d) return;
+      e.preventDefault();
+      var n = tabEls[(i + d + tabEls.length) % tabEls.length];
+      n.focus();
+      goTab(n.dataset.tab);
+    });
   });
 
   /* ปุ่ม “← ล็อบบี้” ในทุกห้อง (delegate เพราะห้องใหม่อาจถูกเพิ่มภายหลัง) */
