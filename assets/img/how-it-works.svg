@@ -12,7 +12,7 @@
 
   <!-- หัวเรื่อง -->
   <text x="80" y="92" font-size="44" font-weight="bold" fill="#2B2A4C">โค้ดน้อย — เส้นทางการเรียนรู้ของนักเขียนโปรแกรมตัวจิ๋ว</text>
-  <text x="80" y="138" font-size="23" fill="#5B5A7E">เว็บเล่น–เรียนโค้ดดิ้งสำหรับเด็ก 5 ขวบ · ทุกสถานีเล่นด้วยการแตะ ไม่ต้องอ่านออกก็เล่นได้</text>
+  <text x="80" y="138" font-size="23" fill="#5B5A7E">เว็บเล่น–เรียนโค้ดดิ้งสำหรับเด็ก 5 ขวบ · ทุกห้องเล่นด้วยการแตะ ไม่ต้องอ่านออกก็เล่นได้</text>
 
   <!-- แถวโครงสร้างเว็บ: 5 หน้า -->
   <g font-size="19" font-weight="bold" fill="#2B2A4C" text-anchor="middle">
@@ -34,10 +34,10 @@
     <polygon points="1232,212 1256,223 1232,234" fill="#E0B71B"/>
   </g>
 
-  <!-- หัวข้อแถวสถานี -->
+  <!-- หัวข้อแถวห้องเล่น -->
   <text x="80" y="318" font-size="24" font-weight="bold" fill="#5B5A7E">11 ห้องเรียนรู้ — ห้องเดิม 5 ห้อง + ห้องใหม่ 6 ห้อง</text>
 
-  <!-- การ์ดสถานี 1 -->
+  <!-- การ์ดห้อง 1 -->
   <g>
     <rect x="80" y="340" width="256" height="300" rx="28" fill="#FFFFFF" stroke="#F0E4D0" stroke-width="5"/>
     <rect x="98" y="358" width="220" height="12" rx="6" fill="#FF6B6B"/>
@@ -49,7 +49,7 @@
     <text x="104" y="600" font-size="16" fill="#5B5A7E">ฝึกวางแผนเป็นขั้นเป็นตอน</text>
   </g>
 
-  <!-- การ์ดสถานี 2 -->
+  <!-- การ์ดห้อง 2 -->
   <g>
     <rect x="376" y="340" width="256" height="300" rx="28" fill="#FFFFFF" stroke="#F0E4D0" stroke-width="5"/>
     <rect x="394" y="358" width="220" height="12" rx="6" fill="#9B7BFF"/>
@@ -61,7 +61,7 @@
     <text x="400" y="600" font-size="16" fill="#5B5A7E">ฟังจังหวะช่วยจำได้</text>
   </g>
 
-  <!-- การ์ดสถานี 3 -->
+  <!-- การ์ดห้อง 3 -->
   <g>
     <rect x="672" y="340" width="256" height="300" rx="28" fill="#FFFFFF" stroke="#F0E4D0" stroke-width="5"/>
     <rect x="690" y="358" width="220" height="12" rx="6" fill="#5BC97E"/>
@@ -73,7 +73,7 @@
     <text x="696" y="600" font-size="16" fill="#5B5A7E">ฝึกดูคุณสมบัติของของ</text>
   </g>
 
-  <!-- การ์ดสถานี 4 -->
+  <!-- การ์ดห้อง 4 -->
   <g>
     <rect x="968" y="340" width="256" height="300" rx="28" fill="#FFFFFF" stroke="#F0E4D0" stroke-width="5"/>
     <rect x="986" y="358" width="220" height="12" rx="6" fill="#7BC6FF"/>
@@ -85,7 +85,7 @@
     <text x="992" y="600" font-size="16" fill="#5B5A7E">เล่นย้อนกลับเป็นเพลง</text>
   </g>
 
-  <!-- การ์ดสถานี 5 -->
+  <!-- การ์ดห้อง 5 -->
   <g>
     <rect x="1264" y="340" width="256" height="300" rx="28" fill="#FFFFFF" stroke="#F0E4D0" stroke-width="5"/>
     <rect x="1282" y="358" width="220" height="12" rx="6" fill="#FF8A5B"/>

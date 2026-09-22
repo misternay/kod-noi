@@ -297,7 +297,7 @@
   var SHAPES = [
     { ic: '🔵', name: 'วงกลม' }, { ic: '🟥', name: 'สี่เหลี่ยม' },
     { ic: '🔺', name: 'สามเหลี่ยม' }, { ic: '⭐', name: 'ดาว' },
-    { ic: '🟪', name: 'สี่เหลี่ยมข้าวหลามตัด' }, { ic: '🟡', name: 'วงกลมเหลือง' }
+    { ic: '🟪', name: 'สี่เหลี่ยมม่วง' }, { ic: '🟡', name: 'วงกลมเหลือง' }
   ];
   var sh = { row: $('#hRow'), choices: $('#hChoices'), hint: $('#hHint'), label: $('#hCount'), btn: $('#hRestart'),
              round: 0, right: 0, seq: [], answer: 0 };
