@@ -129,6 +129,7 @@
     rg.hint.textContent = L.hint;
     rg.hint.className = 'banner';
     if (rg.levelLabel) rg.levelLabel.textContent = 'ด่าน ' + (rg.lv + 1) + ' / ' + R_LEVELS.length;
+    KN.ui.dots($('#rDots'), rg.lv + 1, R_LEVELS.length);
     paintCmds();
     setPad(false);
     paintLevelPick();
@@ -415,6 +416,7 @@
     });
 
     if (pg.label) pg.label.textContent = 'ข้อ ' + (pg.i + 1) + ' / ' + P_LEVELS.length;
+    KN.ui.dots($('#pDots'), pg.i + 1, P_LEVELS.length);
     pg.hint.textContent = 'ดูให้ดี… แล้วอะไรจะมาต่อจากช่อง "?" เอ่ย?';
     pg.hint.className = 'banner';
   }
@@ -515,11 +517,15 @@
       b.className = 'basket ' + c.cls;
       b.dataset.cat = c.id;
       b.setAttribute('aria-label', c.label);
+      /* ตัวอย่างของที่อยู่ในตะกร้าแต่ละใบ — ให้เด็กที่ยังอ่านไม่ออกจำจากภาพแทนข้อความ */
+      var demo = set.items.filter(function (x) { return x.cat === c.id; }).slice(0, 3)
+        .map(function (x) { return x.ic; }).join('');
+      var demoRow = '<span class="basket__demo" aria-hidden="true">' + demo + '</span>';
       if (set.key === 'color') {
-        b.innerHTML = '<span class="swatch"></span>' + c.label;
+        b.innerHTML = '<span class="swatch"></span>' + demoRow + c.label;
       } else {
         var icons = { food: '🍽️', animal: '🐾', vehicle: '🚦' };
-        b.innerHTML = '<span class="emo" style="font-size:34px">' + (icons[c.id] || '🧺') + '</span>' + c.label;
+        b.innerHTML = '<span class="emo" style="font-size:34px">' + (icons[c.id] || '🧺') + '</span>' + demoRow + c.label;
       }
       b.addEventListener('click', function () { answerSort(b.dataset.cat, b); });
       sgb.baskets.appendChild(b);
@@ -535,6 +541,7 @@
     void sgb.item.offsetWidth;
     sgb.item.style.animation = '';
     if (sgb.label) sgb.label.textContent = 'ชิ้นที่ ' + (sgb.done + 1) + ' / ' + S_SETS[sgb.setIdx].items.length;
+    KN.ui.dots($('#sDots'), sgb.done + 1, S_SETS[sgb.setIdx].items.length);
   }
 
   function startSort() {
@@ -890,6 +897,7 @@
       stb.cards.appendChild(c);
     });
     if (stb.label) stb.label.textContent = 'ชุดที่ ' + (stb.setIdx + 1) + ' / ' + ST_SETS.length;
+    KN.ui.dots($('#tDots'), stb.setIdx + 1, ST_SETS.length);
     stb.hint.textContent = 'เรื่องนี้อะไรเกิดก่อน อะไรเกิดทีหลัง? แตะการ์ดเรียงจากซ้ายไปขวา';
     stb.hint.className = 'banner';
   }

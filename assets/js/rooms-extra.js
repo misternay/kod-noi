@@ -58,6 +58,7 @@
       mg.grid.appendChild(b);
     });
     if (mg.label) mg.label.textContent = 'คู่ที่จับได้ 0 / 6 · แตะ ' + mg.moves + ' ครั้ง';
+    KN.ui.dots($('#mDots'), 0, MEM_ICONS.length);
     mg.hint.textContent = 'แตะลูกโป่งทีละใบ จำภาพให้ดี แล้วหาคู่ของมัน 🎈';
     mg.hint.className = 'banner';
   }
@@ -82,6 +83,7 @@
       audio.pop();
       reward(1);
       if (mg.label) mg.label.textContent = 'คู่ที่จับได้ ' + mg.matched + ' / 6 · แตะ ' + mg.moves + ' ครั้ง';
+      KN.ui.dots($('#mDots'), mg.matched, MEM_ICONS.length);
       if (mg.matched >= MEM_ICONS.length) {
         finishRoom('balloon', Math.max(10, 120 - mg.moves * 5));
         say('เก่งมาก จับคู่ครบทุกคู่');
@@ -114,15 +116,17 @@
      ห้อง 7 — บันไดดนตรี (ฟังเสียง + ลำดับ)
      ====================================================================== */
   var NOTES = [
-    { f: 261.63, label: 'โด' }, { f: 293.66, label: 'เร' }, { f: 329.63, label: 'มี' },
-    { f: 349.23, label: 'ฟา' }, { f: 392.00, label: 'ซอล' }, { f: 440.00, label: 'ลา' },
-    { f: 493.88, label: 'ที' }, { f: 523.25, label: 'โดสูง' }
+    { f: 261.63, label: 'โด', ic: '🐘' }, { f: 293.66, label: 'เร', ic: '🦒' },
+    { f: 329.63, label: 'มี', ic: '🐵' }, { f: 349.23, label: 'ฟา', ic: '🐶' },
+    { f: 392.00, label: 'ซอล', ic: '🐰' }, { f: 440.00, label: 'ลา', ic: '🐸' },
+    { f: 493.88, label: 'ที', ic: '🦁' }, { f: 523.25, label: 'โดสูง', ic: '🐼' }
   ];
   var mu = { pads: $('#nPads'), hint: $('#nHint'), label: $('#nCount'), btn: $('#nRestart'), btnPlay: $('#nPlay'),
              seq: [], input: [], level: 1, playing: false };
 
   function muLabel() {
     if (mu.label) mu.label.textContent = 'รอบที่ ' + mu.level + ' · ทำนองยาว ' + (mu.level + 1) + ' เสียง';
+    KN.ui.dots($('#nDots'), mu.level, 6);
   }
 
   async function muPlay() {
@@ -184,7 +188,8 @@
       b.type = 'button';
       b.className = 'notebtn';
       b.style.setProperty('--h', (46 + i * 9) + '%');
-      b.innerHTML = '<b>' + n.label + '</b>';
+      /* สัตว์ประจำเสียงแต่ละคีย์ — ให้เด็กจำ "เสียงช้าง/ยีราฟ" แทนชื่อโน้ต */
+      b.innerHTML = '<span class="notebtn__ic" aria-hidden="true">' + n.ic + '</span><b>' + n.label + '</b>';
       b.setAttribute('aria-label', 'เสียง ' + n.label);
       b.addEventListener('click', function () { muTap(i); });
       mu.pads.appendChild(b);
@@ -232,13 +237,17 @@
       var b = document.createElement('button');
       b.type = 'button';
       b.className = 'numbtn';
-      b.textContent = n;
+      /* ตัวเลข + จุดใต้ตัวเลข — เด็กที่ยังไม่คล่องตัวเลข นับจุดเทียบกับของได้ */
+      var dhtml = '';
+      for (var d = 0; d < n; d++) dhtml += '<i></i>';
+      b.innerHTML = '<b>' + n + '</b><span class="numdots" aria-hidden="true">' + dhtml + '</span>';
       b.setAttribute('aria-label', 'จำนวน ' + n);
       b.addEventListener('click', function () { answerCount(n, b); });
       cn.choices.appendChild(b);
     });
     cn.round++;
     if (cn.label) cn.label.textContent = 'ข้อ ' + cn.round + ' / 8';
+    KN.ui.dots($('#cDots'), cn.round, 8);
     cn.hint.textContent = 'นับของในตะกร้า แล้วแตะตัวเลขให้ถูกจำนวน 🔢';
     cn.hint.className = 'banner';
     cn.locked = false;
@@ -346,6 +355,7 @@
     });
     sh.round++;
     if (sh.label) sh.label.textContent = 'ข้อ ' + sh.round + ' / 8';
+    KN.ui.dots($('#hDots'), sh.round, 8);
     sh.hint.textContent = 'ดูจังหวะรูปร่างที่ซ้ำกัน แล้วหาว่าช่อง “?” คือรูปไหน 🔍';
     sh.hint.className = 'banner';
   }
@@ -456,6 +466,7 @@
       mz.wins++;
       finishRoom('maze', Math.max(20, 200 - mz.steps * 5));
       reward(3);
+      KN.ui.icons($('#zWins'), mz.wins, '🥕', 8);
       mz.bunny.classList.add('cheer');
       say('ถึงแครอทแล้ว เก่งมาก');
       audio.win();
@@ -468,6 +479,7 @@
   if (mz.grid) {
     renderMaze();
     if (mz.label) mz.label.textContent = 'เดินแล้ว 0 ช่อง · ชนะ 0 ครั้ง';
+    KN.ui.icons($('#zWins'), 0, '🥕');
     ui.$$('#zPad .key[data-dir]').forEach(function (b) {
       b.addEventListener('click', function () { moveBunny(b.dataset.dir); });
     });
@@ -549,6 +561,7 @@
     }
     wd.round++;
     if (wd.label) wd.label.textContent = 'รอบที่ ' + wd.round + ' / 6';
+    KN.ui.dots($('#wDots'), wd.round, 6);
     wd.hint.textContent = 'มีตัวอักษรหนึ่งตัวที่ไม่เหมือนเพื่อน หาเจอไหม? 🔍';
     wd.hint.className = 'banner';
   }

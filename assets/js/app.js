@@ -220,6 +220,27 @@
         document.body.appendChild(d);
         (function (el) { setTimeout(function () { if (el.parentNode) el.parentNode.removeChild(el); }, 3400); })(d);
       }
+    },
+
+    /* จุดความคืบหน้า ●●●○○ — ให้เด็กที่ยังอ่านไม่ออกเห็นความคืบหน้าเป็นภาพ */
+    dots: function (el, cur, total) {
+      if (!el) return;
+      var n = Math.max(0, total | 0);
+      var c = Math.min(Math.max(0, cur | 0), n);
+      var h = '';
+      for (var i = 0; i < n; i++) h += '<i' + (i < c ? ' class="on"' : '') + '></i>';
+      el.innerHTML = h;
+    },
+
+    /* ทำซ้ำไอคอนเป็นแถว (เช่น แครอท 🥕 ที่ชนะสะสม) */
+    icons: function (el, count, icon, max) {
+      if (!el) return;
+      var n = Math.max(0, count | 0);
+      var m = max || 8;
+      var h = '';
+      for (var i = 0; i < Math.min(n, m); i++) h += '<i>' + icon + '</i>';
+      if (n > m) h += '<b>×' + n + '</b>';
+      el.innerHTML = h;
     }
   };
 
@@ -232,7 +253,10 @@
     el.className = 'celebrate';
     el.innerHTML =
       '<div class="celebrate__box" role="dialog" aria-modal="true" aria-labelledby="celTitle">' +
-      '<div class="emo emo--lg" id="celIcon">🌟</div>' +
+      '<div class="celebrate__pair">' +
+        '<img class="celebrate__mascot" src="assets/img/mascot.svg" alt="น้องบอทหัวเมฆ">' +
+        '<div class="emo emo--lg" id="celIcon">🌟</div>' +
+      '</div>' +
       '<h3 id="celTitle">เยี่ยมมาก!</h3>' +
       '<p id="celText" class="lead"></p>' +
       '<div class="btn-row" style="justify-content:center" id="celActions"></div>' +

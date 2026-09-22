@@ -31,16 +31,21 @@
       card.type = 'button';
       card.className = 'roomcard';
       card.dataset.room = room.id;
-      card.setAttribute('aria-label', 'เข้าห้อง' + room.name);
+      card.setAttribute('aria-label', 'เข้าห้อง ' + room.name + ' · ' + room.skill);
+      /* ดาว 1–3 ดวงแทนตัวเลขสถิติ — ให้เด็กที่ยังอ่านไม่ออกเห็นความคืบหน้าเป็นภาพ */
+      var stars = r.plays === 0 ? 0 : (r.best >= 80 ? 3 : r.best >= 40 ? 2 : 1);
+      var starRow = '';
+      for (var s = 1; s <= 3; s++) starRow += '<span' + (s <= stars ? ' class="on"' : '') + '>⭐</span>';
       card.innerHTML =
         '<span class="roomcard__icon">' + room.icon + '</span>' +
         '<span class="roomcard__body">' +
           '<b>' + room.name + '</b>' +
-          '<span class="roomcard__skill">' + room.skill + '</span>' +
-          '<span class="roomcard__desc">' + room.desc + '</span>' +
-          '<span class="roomcard__meta">🏆 สถิติสูงสุด ' + r.best + ' · เล่น ' + r.plays + ' ครั้ง · ' + fmtTime(r.last) + '</span>' +
+          (r.plays === 0
+            ? '<span class="roomcard__new">✨ ห้องใหม่!</span>'
+            : '<span class="roomcard__stars" title="คะแนนสูงสุด ' + r.best + '">' + starRow + '</span>' +
+              '<span class="roomcard__meta">🏆 ' + r.best + ' · ▶️ ' + r.plays + ' · 🕐 ' + fmtTime(r.last) + '</span>') +
         '</span>' +
-        '<span class="roomcard__go">เข้าห้อง ▶</span>';
+        '<span class="roomcard__go" aria-hidden="true">▶</span>';
       card.addEventListener('click', function () { goTab(room.id); });
       lobbyGrid.appendChild(card);
     });

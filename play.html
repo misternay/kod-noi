@@ -61,7 +61,7 @@
     <!-- ================= ล็อบบี้ ================= -->
     <section class="panel on" id="tab-lobby" role="tabpanel" aria-label="ล็อบบี้รวมห้องเล่น">
       <div class="card">
-        <h2 style="margin-bottom:6px">🗺️ เลือกห้องที่อยากเล่น</h2>
+        <h2 style="margin-bottom:6px"><img class="lobbymascot" src="assets/img/mascot.svg" alt=""> เลือกห้องที่อยากเล่น</h2>
         <p class="lead" style="margin-bottom:18px">
           ทั้งหมด <b id="lobbyTotalDup">11</b> ห้อง — แตะการ์ดเพื่อเข้าห้องได้เลย
           ทุกห้องจะจำสถิติของหนูไว้ให้เอง (เล่นได้ทั้งในเครื่องนี้ ไม่ส่งข้อมูลออกไปที่ใด)
@@ -78,12 +78,17 @@
     <section class="panel" id="tab-robot" role="tabpanel" aria-label="หุ่นยนต์เก็บดาว">
       <div class="stage">
         <div class="stage__head">
-          <a class="backbtn" href="#lobby" data-back="lobby">← ล็อบบี้</a>
+          <a class="backbtn" href="#lobby" data-back="lobby">🗺️ ล็อบบี้</a>
           <h3>🤖 หุ่นยนต์เก็บดาว</h3>
           <span class="badge badge--coral">ลำดับคำสั่ง</span>
-          <span class="goal"><span id="rLevel">ด่าน 1 / 8</span></span>
+          <span class="goal"><span id="rLevel">ด่าน 1 / 8</span> <span class="goaldots" id="rDots" aria-hidden="true"></span></span>
         </div>
         <p class="banner" id="rHint">กดลูกศรให้หุ่นยนต์เดินไปหาดาว ⭐</p>
+        <div class="howto" aria-label="วิธีเล่นแบบภาพ: กดลูกศร หุ่นยนต์เดินตาม ไปให้ถึงดาว">
+          <span class="howto__g">⬆️⬅️➡️</span><i class="howto__arr">➜</i>
+          <span class="howto__g">🤖</span><i class="howto__arr">➜</i>
+          <span class="howto__g">⭐</span>
+        </div>
         <p class="muted" style="font-size:14px;margin:8px 0 0">วิธีเล่น: กดลูกศรให้ครบแผน แล้วกด “ลองเลย” ถ้ายังไม่ถึงดาวก็แก้ได้เรื่อย ๆ ไม่มีหักดาว</p>
 
         <div class="playzone" style="margin-top:14px">
@@ -121,12 +126,17 @@
     <section class="panel" id="tab-pattern" role="tabpanel" aria-label="อะไรต่อนะ">
       <div class="stage">
         <div class="stage__head">
-          <a class="backbtn" href="#lobby" data-back="lobby">← ล็อบบี้</a>
+          <a class="backbtn" href="#lobby" data-back="lobby">🗺️ ล็อบบี้</a>
           <h3>🎯 อะไรต่อนะ</h3>
           <span class="badge">การเห็นรูปแบบ</span>
-          <span class="goal"><span id="pCount">ข้อ 1 / 14</span></span>
+          <span class="goal"><span id="pCount">ข้อ 1 / 14</span> <span class="goaldots" id="pDots" aria-hidden="true"></span></span>
         </div>
         <p class="banner" id="pHint">ดูให้ดี… แล้วอะไรจะมาต่อจากช่อง “?” เอ่ย?</p>
+        <div class="howto" aria-label="วิธีเล่นแบบภาพ: ดูรูปที่เรียง คิดว่าอะไรต่อ แล้วแตะคำตอบ">
+          <span class="howto__g">🍎🔵🍎❓</span><i class="howto__arr">➜</i>
+          <span class="howto__g">👀🤔</span><i class="howto__arr">➜</i>
+          <span class="howto__g">👆✅</span>
+        </div>
         <p class="muted" style="font-size:14px;margin:8px 0 0">วิธีเล่น: ดูชุดภาพที่เรียงกัน แล้วแตะคำตอบที่ควรมาต่อ ถ้าคิดไม่ออกให้กดฟังจังหวะ</p>
         <div class="seq" id="pSeq" style="margin:20px 0" aria-label="ชุดภาพที่เรียงกันอยู่"></div>
         <div class="choices" id="pChoices" aria-label="ตัวเลือกคำตอบ"></div>
@@ -140,12 +150,17 @@
     <section class="panel" id="tab-sort" role="tabpanel" aria-label="แยกตะกร้า">
       <div class="stage">
         <div class="stage__head">
-          <a class="backbtn" href="#lobby" data-back="lobby">← ล็อบบี้</a>
+          <a class="backbtn" href="#lobby" data-back="lobby">🗺️ ล็อบบี้</a>
           <h3>🧺 <span id="sTitle">แยกตามสี</span></h3>
           <span class="badge badge--leaf">การจำแนก · เงื่อนไข</span>
-          <span class="goal"><span id="sCount">ชิ้นที่ 1 / 9</span></span>
+          <span class="goal"><span id="sCount">ชิ้นที่ 1 / 9</span> <span class="goaldots" id="sDots" aria-hidden="true"></span></span>
         </div>
         <p class="banner" id="sHint">ของชิ้นนี้ควรใส่ตะกร้าสีอะไรนะ?</p>
+        <div class="howto" aria-label="วิธีเล่นแบบภาพ: ดูของที่โผล่มา แตะตะกร้าที่ถูก เรียบร้อย">
+          <span class="howto__g">🍎</span><i class="howto__arr">➜</i>
+          <span class="howto__g">🧺</span><i class="howto__arr">➜</i>
+          <span class="howto__g">✅</span>
+        </div>
         <p class="muted" style="font-size:14px;margin:8px 0 0">วิธีเล่น: ดูของที่โผล่มา แล้วแตะตะกร้าที่ใช่ มีทั้งแยกตามสีและแยกตามชนิด</p>
         <div class="sortzone" style="margin-top:18px">
           <div class="sortitem" id="sItem" aria-live="polite">🍎</div>
@@ -159,11 +174,16 @@
     <section class="panel" id="tab-studio" role="tabpanel" aria-label="ห้องแสงสี">
       <div class="stage">
         <div class="stage__head">
-          <a class="backbtn" href="#lobby" data-back="lobby">← ล็อบบี้</a>
+          <a class="backbtn" href="#lobby" data-back="lobby">🗺️ ล็อบบี้</a>
           <h3>🎨 ห้องแสงสี</h3>
           <span class="badge badge--sun">สร้างสรรค์ · จังหวะและลูป</span>
         </div>
         <p class="banner" id="gHint">เลือกสีทางขวา แล้วแตะช่องในกรอบได้เลย ทุกการแตะจะเกิดเสียงด้วยนะ 🎵</p>
+        <div class="howto" aria-label="วิธีเล่นแบบภาพ: เลือกสี แตะช่องในกรอบ ฟังจังหวะที่ได้">
+          <span class="howto__g">🎨</span><i class="howto__arr">➜</i>
+          <span class="howto__g">👆</span><i class="howto__arr">➜</i>
+          <span class="howto__g">🎵</span>
+        </div>
         <p class="muted" style="font-size:14px;margin:8px 0 0">วิธีเล่น: เลือกสีแล้วแตะช่องในกรอบ กด “เล่นจังหวะ” เพื่อฟังเพลงที่หนูสร้าง</p>
         <div class="studio" style="margin-top:16px">
           <div class="canvasgrid" id="gGrid" aria-label="กระดานวาดแสงสี"></div>
@@ -189,12 +209,17 @@
     <section class="panel" id="tab-story" role="tabpanel" aria-label="เรียงเรื่องราว">
       <div class="stage">
         <div class="stage__head">
-          <a class="backbtn" href="#lobby" data-back="lobby">← ล็อบบี้</a>
+          <a class="backbtn" href="#lobby" data-back="lobby">🗺️ ล็อบบี้</a>
           <h3>📚 เรียงเรื่องราว</h3>
           <span class="badge badge--coral">ลำดับเหตุการณ์</span>
-          <span class="goal"><span id="tCount">ชุดที่ 1 / 6</span></span>
+          <span class="goal"><span id="tCount">ชุดที่ 1 / 6</span> <span class="goaldots" id="tDots" aria-hidden="true"></span></span>
         </div>
         <p class="banner" id="tHint">เรื่องนี้อะไรเกิดก่อน อะไรเกิดทีหลัง? แตะการ์ดเรียงจากซ้ายไปขวา</p>
+        <div class="howto" aria-label="วิธีเล่นแบบภาพ: แตะการ์ดเรียงให้เป็นลำดับ หนึ่ง สอง สาม">
+          <span class="howto__g">👆🖼️</span><i class="howto__arr">➜</i>
+          <span class="howto__g">1️⃣2️⃣3️⃣</span><i class="howto__arr">➜</i>
+          <span class="howto__g">✅</span>
+        </div>
         <p class="muted" style="font-size:14px;margin:8px 0 0">วิธีเล่น: แตะการ์ดเรียงจากซ้ายไปขวา ว่าอะไรเกิดก่อนและหลัง</p>
         <div class="sortzone" style="margin-top:18px">
           <div class="storyrow" id="tSlots" aria-label="ช่องเรียงลำดับ"></div>
@@ -208,12 +233,17 @@
     <section class="panel" id="tab-balloon" role="tabpanel" aria-label="จับคู่ลูกโป่ง">
       <div class="stage">
         <div class="stage__head">
-          <a class="backbtn" href="#lobby" data-back="lobby">← ล็อบบี้</a>
+          <a class="backbtn" href="#lobby" data-back="lobby">🗺️ ล็อบบี้</a>
           <h3>🎈 จับคู่ลูกโป่ง</h3>
           <span class="badge badge--sun">ความจำ · การจับคู่</span>
-          <span class="goal"><span id="mCount">คู่ที่จับได้ 0 / 6</span></span>
+          <span class="goal"><span id="mCount">คู่ที่จับได้ 0 / 6</span> <span class="goaldots" id="mDots" aria-hidden="true"></span></span>
         </div>
         <p class="banner" id="mHint">แตะลูกโป่งทีละใบ จำภาพให้ดี แล้วหาคู่ของมัน 🎈</p>
+        <div class="howto" aria-label="วิธีเล่นแบบภาพ: แตะลูกโป่ง จำภาพที่เห็น หาคู่ที่เหมือนกัน">
+          <span class="howto__g">👆🎈</span><i class="howto__arr">➜</i>
+          <span class="howto__g">👀</span><i class="howto__arr">➜</i>
+          <span class="howto__g">🎈🎈✅</span>
+        </div>
         <p class="muted" style="font-size:14px;margin:8px 0 0">วิธีเล่น: แตะลูกโป่งสองใบ ถ้าภาพเหมือนกันคือจับคู่สำเร็จ เก็บให้ครบทั้ง 6 คู่</p>
         <div class="memgrid" id="mGrid" aria-label="ลูกโป่งทั้งหมด" style="margin-top:18px"></div>
         <div class="btn-row" style="margin-top:18px">
@@ -226,12 +256,17 @@
     <section class="panel" id="tab-music" role="tabpanel" aria-label="บันไดดนตรี">
       <div class="stage">
         <div class="stage__head">
-          <a class="backbtn" href="#lobby" data-back="lobby">← ล็อบบี้</a>
+          <a class="backbtn" href="#lobby" data-back="lobby">🗺️ ล็อบบี้</a>
           <h3>🎵 บันไดดนตรี</h3>
           <span class="badge">ฟังเสียง · ลำดับ</span>
-          <span class="goal"><span id="nCount">รอบที่ 1</span></span>
+          <span class="goal"><span id="nCount">รอบที่ 1</span> <span class="goaldots" id="nDots" aria-hidden="true"></span></span>
         </div>
         <p class="banner" id="nHint">กดปุ่มฟังทำนองก่อน แล้วแตะบันไดซ้ำตามที่ได้ยิน 🎧</p>
+        <div class="howto" aria-label="วิธีเล่นแบบภาพ: ฟังทำนอง จำให้ได้ แล้วแตะบันไดตามลำดับ">
+          <span class="howto__g">🎧</span><i class="howto__arr">➜</i>
+          <span class="howto__g">🧠</span><i class="howto__arr">➜</i>
+          <span class="howto__g">👆🐘</span>
+        </div>
         <p class="muted" style="font-size:14px;margin:8px 0 0">วิธีเล่น: ฟังเสียงบันไดที่เล่นให้ แล้วแตะบันไดซ้ำตามลำดับจากต่ำไปสูง</p>
         <div class="notepads" id="nPads" aria-label="บันไดเสียง" style="margin-top:18px"></div>
         <div class="btn-row" style="margin-top:18px">
@@ -245,12 +280,17 @@
     <section class="panel" id="tab-count" role="tabpanel" aria-label="ตลาดนับของ">
       <div class="stage">
         <div class="stage__head">
-          <a class="backbtn" href="#lobby" data-back="lobby">← ล็อบบี้</a>
+          <a class="backbtn" href="#lobby" data-back="lobby">🗺️ ล็อบบี้</a>
           <h3>🍎 ตลาดนับของ</h3>
           <span class="badge badge--leaf">การนับ · จำนวน</span>
-          <span class="goal"><span id="cCount">ข้อ 1 / 8</span></span>
+          <span class="goal"><span id="cCount">ข้อ 1 / 8</span> <span class="goaldots" id="cDots" aria-hidden="true"></span></span>
         </div>
         <p class="banner" id="cHint">นับของในตะกร้า แล้วแตะตัวเลขให้ถูกจำนวน 🔢</p>
+        <div class="howto" aria-label="วิธีเล่นแบบภาพ: นับของในตะกร้า แล้วแตะตัวเลขที่ตรงกัน">
+          <span class="howto__g">🍎🍎🍎</span><i class="howto__arr">➜</i>
+          <span class="howto__g">3️⃣</span><i class="howto__arr">➜</i>
+          <span class="howto__g">✅</span>
+        </div>
         <p class="muted" style="font-size:14px;margin:8px 0 0">วิธีเล่น: ดูของที่โผล่มา แล้วแตะตัวเลขให้ตรงกับจำนวนที่เห็น</p>
         <div class="cntray" id="cTray" aria-live="polite" style="margin-top:18px"></div>
         <div class="numgrid" id="cChoices" aria-label="ตัวเลือกจำนวน" style="margin-top:18px"></div>
@@ -264,12 +304,17 @@
     <section class="panel" id="tab-shape" role="tabpanel" aria-label="ตามรอยรูปร่าง">
       <div class="stage">
         <div class="stage__head">
-          <a class="backbtn" href="#lobby" data-back="lobby">← ล็อบบี้</a>
+          <a class="backbtn" href="#lobby" data-back="lobby">🗺️ ล็อบบี้</a>
           <h3>🔵 ตามรอยรูปร่าง</h3>
           <span class="badge">รูปร่าง · รูปแบบ</span>
-          <span class="goal"><span id="hCount">ข้อ 1 / 8</span></span>
+          <span class="goal"><span id="hCount">ข้อ 1 / 8</span> <span class="goaldots" id="hDots" aria-hidden="true"></span></span>
         </div>
         <p class="banner" id="hHint">ดูจังหวะรูปร่างที่ซ้ำกัน แล้วหาว่าช่อง “?” คือรูปไหน 🔍</p>
+        <div class="howto" aria-label="วิธีเล่นแบบภาพ: ดูรูปที่เรียงซ้ำ หารูปที่ต้องมาต่อ แล้วแตะคำตอบ">
+          <span class="howto__g">🔵🟠🔵❓</span><i class="howto__arr">➜</i>
+          <span class="howto__g">👆</span><i class="howto__arr">➜</i>
+          <span class="howto__g">✅</span>
+        </div>
         <p class="muted" style="font-size:14px;margin:8px 0 0">วิธีเล่น: ดูรูปร่างทั้งแถว แล้วหาว่าช่อง “?” ควรเป็นรูปไหน</p>
         <div class="shaperow" id="hRow" style="margin-top:18px"></div>
         <div class="shapechoices" id="hChoices" aria-label="ตัวเลือกรูปร่าง" style="margin-top:18px"></div>
@@ -283,12 +328,17 @@
     <section class="panel" id="tab-maze" role="tabpanel" aria-label="เขาวงกตเสียง">
       <div class="stage">
         <div class="stage__head">
-          <a class="backbtn" href="#lobby" data-back="lobby">← ล็อบบี้</a>
+          <a class="backbtn" href="#lobby" data-back="lobby">🗺️ ล็อบบี้</a>
           <h3>🌀 เขาวงกตเสียง</h3>
           <span class="badge badge--coral">นำทาง · ลำดับ</span>
-          <span class="goal"><span id="zCount">เดินแล้ว 0 ช่อง · ชนะ 0 ครั้ง</span></span>
+          <span class="goal"><span id="zCount">เดินแล้ว 0 ช่อง · ชนะ 0 ครั้ง</span> <span class="goaldots" id="zWins" aria-hidden="true"></span></span>
         </div>
         <p class="banner" id="zHint">พากระต่ายน้อยเดินไปหาแครอท 🥕 ชนกำแพงไม่เป็นไรนะ</p>
+        <div class="howto" aria-label="วิธีเล่นแบบภาพ: ใช้ลูกศรพากระต่ายเดิน ไปให้ถึงแครอท">
+          <span class="howto__g">🐰</span><i class="howto__arr">➜</i>
+          <span class="howto__g">⬆️⬅️➡️</span><i class="howto__arr">➜</i>
+          <span class="howto__g">🥕</span>
+        </div>
         <p class="muted" style="font-size:14px;margin:8px 0 0">วิธีเล่น: ใช้ลูกศรนำทางทีละช่อง ชนกำแพงไม่เป็นไร เดินไปจนถึงแครอท 🥕</p>
         <div class="playzone" style="margin-top:14px">
           <div class="boardwrap">
@@ -315,12 +365,16 @@
     <section class="panel" id="tab-word" role="tabpanel" aria-label="อารมณ์ตัวอักษร">
       <div class="stage">
         <div class="stage__head">
-          <a class="backbtn" href="#lobby" data-back="lobby">← ล็อบบี้</a>
+          <a class="backbtn" href="#lobby" data-back="lobby">🗺️ ล็อบบี้</a>
           <h3>🔤 อารมณ์ตัวอักษร</h3>
           <span class="badge">ตัวอักษร · สังเกต</span>
-          <span class="goal"><span id="wCount">รอบที่ 1 / 6</span></span>
+          <span class="goal"><span id="wCount">รอบที่ 1 / 6</span> <span class="goaldots" id="wDots" aria-hidden="true"></span></span>
         </div>
         <p class="banner" id="wHint">มีตัวอักษรหนึ่งตัวที่ไม่เหมือนเพื่อน หาเจอไหม? 🔍</p>
+        <div class="howto" aria-label="วิธีเล่นแบบภาพ: ส่องดูทีละตัว หาตัวที่ไม่เหมือนเพื่อน แล้วแตะ">
+          <span class="howto__g">🔍👀</span><i class="howto__arr">➜</i>
+          <span class="howto__g">👆❗</span>
+        </div>
         <p class="muted" style="font-size:14px;margin:8px 0 0">วิธีเล่น: ดูแถวตัวอักษร แล้วแตะตัวที่ไม่เหมือนเพื่อน</p>
         <div class="wordrow" id="wRow" style="margin-top:22px"></div>
         <div class="btn-row" style="margin-top:18px">
