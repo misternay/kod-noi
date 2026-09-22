@@ -1,149 +1,58 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 360" role="img" aria-label="น้องบอท หุ่นยนต์นักบินกำลังบินด้วยเจ็ตแพ็ค พร้อมเปลวไฟและประกายดาว">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 360" shape-rendering="crispEdges" role="img" aria-label="น้องบอทหัวเมฆ หน้าจอเทอร์มินัล">
   <defs>
-    <linearGradient id="knBody" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#5ED6DD"/>
-      <stop offset="0.55" stop-color="#3FC1C9"/>
-      <stop offset="1" stop-color="#2A9AA1"/>
+    <linearGradient id="nBlue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5B8BFF"/><stop offset="1" stop-color="#4A7DFF"/>
     </linearGradient>
-    <linearGradient id="knBodyDark" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#2FA6AD"/>
-      <stop offset="1" stop-color="#1F7B82"/>
-    </linearGradient>
-    <linearGradient id="knFace" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#FFFFFF"/>
-      <stop offset="1" stop-color="#FFEFD4"/>
-    </linearGradient>
-    <linearGradient id="knFlame" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#FFE45C"/>
-      <stop offset="0.5" stop-color="#FFB13B"/>
-      <stop offset="1" stop-color="#FF6B6B"/>
-    </linearGradient>
-    <linearGradient id="knFlameCore" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#FFF6C8"/>
-      <stop offset="1" stop-color="#FFE45C"/>
-    </linearGradient>
-    <radialGradient id="knCore" cx="0.35" cy="0.3" r="1">
-      <stop offset="0" stop-color="#FFF3A8"/>
-      <stop offset="1" stop-color="#FFD93D"/>
-    </radialGradient>
-    <radialGradient id="knStarGlow" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#FFF3A8"/>
-      <stop offset="1" stop-color="#FFB13B"/>
-    </radialGradient>
   </defs>
 
-  <!-- พื้นหลังโปร่ง เอียงทั้งตัวเพื่อความไดนามิก -->
-  <g transform="rotate(-8 180 200)">
+  <!-- เงาพื้น -->
+  <ellipse cx="180" cy="318" rx="78" ry="12" fill="#E9DCC6"/>
 
-    <!-- เส้นความเร็ว (motion lines) -->
-    <g stroke="#9BE3E8" stroke-width="7" stroke-linecap="round" opacity="0.55">
-      <line x1="48" y1="292" x2="128" y2="292"/>
-      <line x1="30" y1="322" x2="150" y2="322"/>
-      <line x1="62" y1="260" x2="108" y2="260"/>
-    </g>
-
-    <!-- ===== Jetpack (ด้านหลังตัว) ===== -->
-    <g>
-      <rect x="146" y="196" width="30" height="58" rx="14" fill="url(#knBodyDark)" stroke="#2B2A4C" stroke-width="5"/>
-      <rect x="206" y="196" width="30" height="58" rx="14" fill="url(#knBodyDark)" stroke="#2B2A4C" stroke-width="5"/>
-      <rect x="146" y="196" width="10" height="58" rx="5" fill="#FFFFFF" opacity="0.18"/>
-      <rect x="206" y="196" width="10" height="58" rx="5" fill="#FFFFFF" opacity="0.18"/>
-      <!-- หัวฉีด -->
-      <rect x="150" y="252" width="22" height="12" rx="6" fill="#1F7B82" stroke="#2B2A4C" stroke-width="4"/>
-      <rect x="210" y="252" width="22" height="12" rx="6" fill="#1F7B82" stroke="#2B2A4C" stroke-width="4"/>
-    </g>
-
-    <!-- ===== เปลวไฟ ===== -->
-    <g>
-      <path d="M161 262 C175 296 173 316 161 332 C149 316 147 296 161 262 Z" fill="url(#knFlame)" opacity="0.95"/>
-      <path d="M221 262 C235 296 233 316 221 332 C209 316 207 296 221 262 Z" fill="url(#knFlame)" opacity="0.95"/>
-      <path d="M161 262 C168 288 167 304 161 316 C155 304 154 288 161 262 Z" fill="url(#knFlameCore)"/>
-      <path d="M221 262 C228 288 227 304 221 316 C215 304 214 288 221 262 Z" fill="url(#knFlameCore)"/>
-    </g>
-
-    <!-- ===== ขาจรวด (rocket boots) ===== -->
-    <g>
-      <rect x="150" y="232" width="26" height="22" rx="9" fill="#E14C4C" stroke="#2B2A4C" stroke-width="5"/>
-      <rect x="206" y="232" width="26" height="22" rx="9" fill="#E14C4C" stroke="#2B2A4C" stroke-width="5"/>
-      <path d="M163 254 C169 264 169 272 163 280 C157 272 157 264 163 254 Z" fill="url(#knFlame)"/>
-      <path d="M219 254 C225 264 225 272 219 280 C213 272 213 264 219 254 Z" fill="url(#knFlame)"/>
-    </g>
-
-    <!-- ===== ลำตัว ===== -->
-    <g>
-      <rect x="116" y="128" width="128" height="116" rx="42" fill="url(#knBody)" stroke="#2B2A4C" stroke-width="6"/>
-      <!-- เส้นเงาขอบซ้ายเพื่อ Depth -->
-      <path d="M132 128 C132 128 138 240 138 240 L150 244 L150 128 Z" fill="#FFFFFF" opacity="0.14"/>
-      <!-- แกนหัวใจ / แกนพลังงานที่หน้าอก -->
-      <circle cx="180" cy="172" r="20" fill="url(#knCore)" stroke="#2B2A4C" stroke-width="4"/>
-      <path d="M180 163 L184 170 L191 170 L186 175 L188 182 L180 177 L172 182 L174 175 L169 170 L176 170 Z" fill="#FF6B6B"/>
-      <circle cx="173" cy="165" r="5" fill="#FFFFFF" opacity="0.8"/>
-    </g>
-
-    <!-- ===== แขนซ้าย (โบกมือทักทาย) ===== -->
-    <g>
-      <path d="M128 158 C104 152 92 132 92 106" stroke="#2B2A4C" stroke-width="0" fill="none"/>
-      <rect x="94" y="132" width="22" height="44" rx="11" fill="url(#knBody)" stroke="#2B2A4C" stroke-width="5" transform="rotate(-42 105 154)"/>
-      <circle cx="90" cy="102" r="15" fill="#FF6B6B" stroke="#2B2A4C" stroke-width="5"/>
-      <!-- นิ้ว -->
-      <circle cx="82" cy="96" r="4.5" fill="#FFF8EC" stroke="#2B2A4C" stroke-width="2.5"/>
-      <circle cx="94" cy="92" r="4.5" fill="#FFF8EC" stroke="#2B2A4C" stroke-width="2.5"/>
-      <circle cx="100" cy="102" r="4.5" fill="#FFF8EC" stroke="#2B2A4C" stroke-width="2.5"/>
-    </g>
-
-    <!-- ===== แขนขวา (กำหมัดสู้) ===== -->
-    <g>
-      <rect x="244" y="146" width="22" height="46" rx="11" fill="url(#knBody)" stroke="#2B2A4C" stroke-width="5" transform="rotate(28 255 168)"/>
-      <circle cx="270" cy="192" r="15" fill="#FF6B6B" stroke="#2B2A4C" stroke-width="5"/>
-      <path d="M262 188 Q270 182 278 188" stroke="#FFF8EC" stroke-width="3" fill="none" stroke-linecap="round"/>
-    </g>
-
-    <!-- ===== ศีรษะ ===== -->
-    <g>
-      <!-- เสาอากาศ + ดาวเรืองแสง -->
-      <line x1="180" y1="44" x2="180" y2="20" stroke="#2B2A4C" stroke-width="5" stroke-linecap="round"/>
-      <circle cx="180" cy="16" r="11" fill="url(#knStarGlow)" stroke="#2B2A4C" stroke-width="3.5"/>
-      <path d="M180 9 L183 14 L188 14 L184 17 L186 22 L180 19 L174 22 L176 17 L172 14 L177 14 Z" fill="#FFFFFF" opacity="0.85"/>
-
-      <rect x="116" y="38" width="128" height="94" rx="36" fill="url(#knFace)" stroke="#2B2A4C" stroke-width="6"/>
-      <!-- แถบหูด้านข้าง -->
-      <circle cx="122" cy="86" r="13" fill="#FFD93D" stroke="#2B2A4C" stroke-width="4.5"/>
-      <circle cx="238" cy="86" r="13" fill="#FFD93D" stroke="#2B2A4C" stroke-width="4.5"/>
-
-      <!-- ดวงตากลมโต วาว -->
-      <circle cx="148" cy="82" r="15" fill="#2B2A4C"/>
-      <circle cx="212" cy="82" r="15" fill="#2B2A4C"/>
-      <circle cx="143" cy="77" r="6" fill="#FFFFFF"/>
-      <circle cx="207" cy="77" r="6" fill="#FFFFFF"/>
-      <circle cx="152" cy="87" r="2.5" fill="#FFFFFF"/>
-      <circle cx="216" cy="87" r="2.5" fill="#FFFFFF"/>
-
-      <!-- คิ้วเท่ ๆ -->
-      <path d="M134 66 Q148 60 162 66" stroke="#2B2A4C" stroke-width="4.5" fill="none" stroke-linecap="round"/>
-      <path d="M198 66 Q212 60 226 66" stroke="#2B2A4C" stroke-width="4.5" fill="none" stroke-linecap="round"/>
-
-      <!-- แก้ม -->
-      <circle cx="132" cy="98" r="9" fill="#FF6B6B" opacity="0.4"/>
-      <circle cx="228" cy="98" r="9" fill="#FF6B6B" opacity="0.4"/>
-
-      <!-- ปากยิ้มมั่นใจ -->
-      <path d="M166 100 Q180 114 194 100" stroke="#2B2A4C" stroke-width="5" fill="none" stroke-linecap="round"/>
-    </g>
+  <!-- ===== หัวเมฆ (bumps ซ้อนกันให้เป็นก้อนเมฆ blocky) ===== -->
+  <g fill="url(#nBlue)" stroke="#2B4CBF" stroke-width="7" stroke-linejoin="round">
+    <!-- ฐานหัว -->
+    <rect x="76" y="96" width="208" height="134" rx="46"/>
+    <!-- ปุ่มก้อนเมฆด้านบน -->
+    <circle cx="106" cy="104" r="32"/>
+    <circle cx="150" cy="86" r="38"/>
+    <circle cx="198" cy="82" r="42"/>
+    <circle cx="246" cy="94" r="34"/>
+    <circle cx="274" cy="114" r="22"/>
+    <!-- ก้อนเมฆด้านข้างเล็กน้อย -->
+    <circle cx="84" cy="140" r="22"/>
+    <circle cx="276" cy="142" r="22"/>
   </g>
 
-  <!-- ประกายดาวรอบ ๆ (อยู่นอกการเอียง) -->
-  <g fill="#FFD93D" stroke="#2B2A4C" stroke-width="2">
-    <g transform="translate(40 84)">
-      <path d="M0 -12 L3.5 -3.5 L12 0 L3.5 3.5 L0 12 L-3.5 3.5 L-12 0 L-3.5 -3.5 Z"/>
-    </g>
-    <g transform="translate(318 120) scale(0.8)">
-      <path d="M0 -12 L3.5 -3.5 L12 0 L3.5 3.5 L0 12 L-3.5 3.5 L-12 0 L-3.5 -3.5 Z"/>
-    </g>
-    <g transform="translate(320 236) scale(0.65)">
-      <path d="M0 -12 L3.5 -3.5 L12 0 L3.5 3.5 L0 12 L-3.5 3.5 L-12 0 L-3.5 -3.5 Z"/>
-    </g>
-    <g transform="translate(54 190) scale(0.55)">
-      <path d="M0 -12 L3.5 -3.5 L12 0 L3.5 3.5 L0 12 L-3.5 3.5 L-12 0 L-3.5 -3.5 Z"/>
-    </g>
+  <!-- ===== หน้าจอใบหน้า ===== -->
+  <rect x="126" y="138" width="108" height="66" rx="14" fill="#111827" stroke="#0B0F1A" stroke-width="4"/>
+
+  <!-- สัญลักษณ์ terminal >_ สีฟ้าอ่อน -->
+  <g>
+    <!-- เครื่องหมายมากกว่า > -->
+    <path d="M152 154 L174 171 L152 188" stroke="#A8F0FF" stroke-width="7" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+    <!-- ขีดล่าง _ -->
+    <rect x="182" y="185" width="24" height="7" rx="1.5" fill="#A8F0FF"/>
+    <!-- เคอร์เซอร์กะพริบ -->
+    <rect x="212" y="150" width="8" height="20" rx="2" fill="#A8F0FF" opacity="0.85"/>
+  </g>
+
+  <!-- ===== แขน ===== -->
+  <g fill="url(#nBlue)" stroke="#2B4CBF" stroke-width="6" stroke-linejoin="round">
+    <rect x="112" y="238" width="20" height="44" rx="10" transform="rotate(14 122 260)"/>
+    <rect x="228" y="238" width="20" height="44" rx="10" transform="rotate(-14 238 260)"/>
+  </g>
+
+  <!-- ===== ลำตัว ===== -->
+  <rect x="136" y="230" width="88" height="58" rx="22" fill="url(#nBlue)" stroke="#2B4CBF" stroke-width="7"/>
+  <!-- >_ เล็กที่อก -->
+  <g>
+    <path d="M162 250 L176 264 L162 278" stroke="#CFF6FF" stroke-width="5" fill="none" stroke-linecap="square"/>
+    <rect x="182" y="276" width="16" height="5" rx="1.5" fill="#CFF6FF"/>
+  </g>
+
+  <!-- ===== ขา ===== -->
+  <g fill="url(#nBlue)" stroke="#2B4CBF" stroke-width="6" stroke-linejoin="round">
+    <rect x="150" y="288" width="24" height="26" rx="10"/>
+    <rect x="186" y="288" width="24" height="26" rx="10"/>
   </g>
 </svg>
