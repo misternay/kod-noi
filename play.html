@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ห้องเล่น 11 ห้อง — โค้ดน้อย</title>
+<meta name="description" content="ล็อบบี้ห้องเล่นของโค้ดน้อย รวม 11 ห้องมินิเกมสำหรับเด็ก 5 ขวบ ฝึกลำดับคำสั่ง รูปแบบ การจำแนก การนับ การฟัง และความคิดสร้างสรรค์ พร้อมบันทึกผลการเล่นรายห้อง">
+<meta name="theme-color" content="#FFF8EC">
+<link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<a class="skip" href="#playTop">ข้ามไปล็อบบี้</a>
+
+<header class="top">
+  <div class="wrap top__in">
+    <a class="brand" href="index.html">
+      <img src="assets/img/logo.svg" alt="">
+      <span>
+        <b>ห้องเล่น</b>
+        <small>โค้ดน้อย · <span id="lobbyTotal">11</span> ห้อง</small>
+      </span>
+    </a>
+    <nav class="nav" aria-label="เมนูหลัก">
+      <a href="index.html">หน้าแรก</a>
+      <a href="play.html" aria-current="page">ห้องเล่น</a>
+      <a href="lessons.html">กิจกรรมไม่ใช้จอ</a>
+      <a href="parents.html">สำหรับผู้ปกครอง</a>
+    </nav>
+  </div>
+</header>
+
+<main id="playTop" class="section" style="padding-top:22px">
+  <div class="wrap">
+
+    <!-- แถบสถานะ -->
+    <div class="hud" style="margin-bottom:8px">
+      <span class="hud__stars"><span class="emo" style="font-size:26px">⭐</span> ดาวของหนู: <b id="starCount">0</b></span>
+      <span class="shelf" id="shelf" aria-label="สติกเกอร์ที่สะสมได้"></span>
+      <span style="flex:1"></span>
+      <button class="iconbtn" id="btnSound" type="button" aria-pressed="true" aria-label="เปิดหรือปิดเสียงเอฟเฟกต์">🔊</button>
+      <button class="iconbtn" id="btnVoice" type="button" aria-pressed="true" aria-label="เปิดหรือปิดเสียงพูดผู้ช่วย">🗣️</button>
+    </div>
+
+    <!-- แท็บล็อบบี้ -->
+    <div class="tabs" role="tablist" aria-label="เลือกห้องเล่น">
+      <button class="tab" role="tab" data-tab="lobby" aria-selected="true" aria-controls="tab-lobby">🗺️ ล็อบบี้รวมห้อง</button>
+      <button class="tab" role="tab" data-tab="robot" aria-selected="false" aria-controls="tab-robot">🤖 หุ่นยนต์</button>
+      <button class="tab" role="tab" data-tab="pattern" aria-selected="false" aria-controls="tab-pattern">🎯 อะไรต่อ</button>
+      <button class="tab" role="tab" data-tab="sort" aria-selected="false" aria-controls="tab-sort">🧺 แยกตะกร้า</button>
+      <button class="tab" role="tab" data-tab="studio" aria-selected="false" aria-controls="tab-studio">🎨 แสงสี</button>
+      <button class="tab" role="tab" data-tab="story" aria-selected="false" aria-controls="tab-story">📚 เรียงเรื่อง</button>
+      <button class="tab" role="tab" data-tab="balloon" aria-selected="false" aria-controls="tab-balloon">🎈 จับคู่</button>
+      <button class="tab" role="tab" data-tab="music" aria-selected="false" aria-controls="tab-music">🎵 บันไดเสียง</button>
+      <button class="tab" role="tab" data-tab="count" aria-selected="false" aria-controls="tab-count">🍎 นับของ</button>
+      <button class="tab" role="tab" data-tab="shape" aria-selected="false" aria-controls="tab-shape">🔵 รูปร่าง</button>
+      <button class="tab" role="tab" data-tab="maze" aria-selected="false" aria-controls="tab-maze">🌀 เขาวงกต</button>
+      <button class="tab" role="tab" data-tab="word" aria-selected="false" aria-controls="tab-word">🔤 ตัวอักษร</button>
+    </div>
+
+    <!-- ================= ล็อบบี้ ================= -->
+    <section class="panel on" id="tab-lobby" role="tabpanel" aria-label="ล็อบบี้รวมห้องเล่น">
+      <div class="card">
+        <h2 style="margin-bottom:6px">🗺️ เลือกห้องที่อยากเล่น</h2>
+        <p class="lead" style="margin-bottom:18px">
+          ทั้งหมด <b id="lobbyTotalDup">11</b> ห้อง — แตะการ์ดเพื่อเข้าห้องได้เลย
+          ทุกห้องจะจำสถิติของหนูไว้ให้เอง (เล่นได้ทั้งในเครื่องนี้ ไม่ส่งข้อมูลออกไปที่ใด)
+        </p>
+        <div class="roomgrid" id="lobbyGrid"></div>
+        <p class="muted" style="font-size:14px;margin:18px 0 0">
+          💡 เคล็ดลับ: ห้องไหนยังไม่เคยเล่น ลองเริ่มจากห้องแรก ๆ ก่อน แล้วค่อยไปห้องที่ยากขึ้น
+          หรือกดแท็บด้านบนเพื่อสลับห้องเร็ว ๆ ก็ได้
+        </p>
+      </div>
+    </section>
+
+    <!-- ======== ห้อง 1: หุ่นยนต์เก็บดาว ======== -->
+    <section class="panel" id="tab-robot" role="tabpanel" aria-label="หุ่นยนต์เก็บดาว">
+      <div class="stage">
+        <div class="stage__head">
+          <a class="backbtn" href="#lobby" data-back="lobby">← ล็อบบี้</a>
+          <h3>🤖 หุ่นยนต์เก็บดาว</h3>
+          <span class="badge badge--coral">ลำดับคำสั่ง</span>
+          <span class="goal"><span id="rLevel">ด่าน 1 / 8</span></span>
+        </div>
+        <p class="banner" id="rHint">กดลูกศรให้หุ่นยนต์เดินไปหาดาว ⭐</p>
+        <p class="muted" style="font-size:14px;margin:8px 0 0">วิธีเล่น: กดลูกศรให้ครบแผน แล้วกด “ลองเลย” ถ้ายังไม่ถึงดาวก็แก้ได้เรื่อย ๆ ไม่มีหักดาว</p>
+
+        <div class="playzone" style="margin-top:14px">
+          <div class="boardwrap">
+            <div class="board" id="rBoard" aria-label="กระดานเดินของหุ่นยนต์">
+              <div class="bot" id="rBot"><span>🤖</span></div>
+            </div>
+            <p class="muted center" style="font-size:14px;margin:10px 0 0">เลือกด่านที่อยากเล่นได้เลย 👇</p>
+            <div class="levelpick center" id="rLevels" style="justify-content:center;margin-top:10px"></div>
+          </div>
+
+          <div>
+            <div class="pad" id="rPad">
+              <button class="sp" type="button" tabindex="-1" aria-hidden="true"></button>
+              <button class="key" type="button" data-dir="up" aria-label="สั่งให้เดินขึ้น">⬆️</button>
+              <button class="sp" type="button" tabindex="-1" aria-hidden="true"></button>
+              <button class="key" type="button" data-dir="left" aria-label="สั่งให้เดินซ้าย">⬅️</button>
+              <button class="key" type="button" data-dir="down" aria-label="สั่งให้เดินลง">⬇️</button>
+              <button class="key" type="button" data-dir="right" aria-label="สั่งให้เดินขวา">➡️</button>
+            </div>
+            <div class="cmds" id="rCmds" aria-live="polite" style="margin-top:14px"><span class="empty">ยังไม่มีคำสั่ง — กดลูกศรด้านบนเพื่อเพิ่มได้เลย</span></div>
+            <div class="actgrid" style="margin-top:16px">
+              <button class="btn" id="rRun" type="button">▶ ลองเลย</button>
+              <button class="btn btn--teal btn--sm" id="rDemo" type="button">👀 ดูตัวอย่างทางเดิน</button>
+              <button class="btn btn--ghost btn--sm" id="rUndo" type="button">↩️ ย้อนกลับ</button>
+              <button class="btn btn--ghost btn--sm" id="rClear" type="button">🧹 ล้างคำสั่ง</button>
+              <button class="btn btn--ghost btn--sm" id="rAgain" type="button">🔄 เริ่มด่านใหม่</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== ห้อง 2: อะไรต่อนะ ======== -->
+    <section class="panel" id="tab-pattern" role="tabpanel" aria-label="อะไรต่อนะ">
+      <div class="stage">
+        <div class="stage__head">
+          <a class="backbtn" href="#lobby" data-back="lobby">← ล็อบบี้</a>
+          <h3>🎯 อะไรต่อนะ</h3>
+          <span class="badge">การเห็นรูปแบบ</span>
+          <span class="goal"><span id="pCount">ข้อ 1 / 14</span></span>
+        </div>
+        <p class="banner" id="pHint">ดูให้ดี… แล้วอะไรจะมาต่อจากช่อง “?” เอ่ย?</p>
+        <p class="muted" style="font-size:14px;margin:8px 0 0">วิธีเล่น: ดูชุดภาพที่เรียงกัน แล้วแตะคำตอบที่ควรมาต่อ ถ้าคิดไม่ออกให้กดฟังจังหวะ</p>
+        <div class="seq" id="pSeq" style="margin:20px 0" aria-label="ชุดภาพที่เรียงกันอยู่"></div>
+        <div class="choices" id="pChoices" aria-label="ตัวเลือกคำตอบ"></div>
+        <div class="btn-row" style="justify-content:center;margin-top:20px">
+          <button class="btn btn--teal btn--sm" id="pRhythm" type="button">🎵 ฟังจังหวะช่วยจำ</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== ห้อง 3: แยกตะกร้า ======== -->
+    <section class="panel" id="tab-sort" role="tabpanel" aria-label="แยกตะกร้า">
+      <div class="stage">
+        <div class="stage__head">
+          <a class="backbtn" href="#lobby" data-back="lobby">← ล็อบบี้</a>
+          <h3>🧺 <span id="sTitle">แยกตามสี</span></h3>
+          <span class="badge badge--leaf">การจำแนก · เงื่อนไข</span>
+          <span class="goal"><span id="sCount">ชิ้นที่ 1 / 9</span></span>
+        </div>
+        <p class="banner" id="sHint">ของชิ้นนี้ควรใส่ตะกร้าสีอะไรนะ?</p>
+        <p class="muted" style="font-size:14px;margin:8px 0 0">วิธีเล่น: ดูของที่โผล่มา แล้วแตะตะกร้าที่ใช่ มีทั้งแยกตามสีและแยกตามชนิด</p>
+        <div class="sortzone" style="margin-top:18px">
+          <div class="sortitem" id="sItem" aria-live="polite">🍎</div>
+          <div class="baskets" id="sBaskets" aria-label="ตะกร้าแยกกลุ่ม"></div>
+          <button class="btn btn--ghost btn--sm" id="sRestart" type="button">🔄 เริ่มชุดนี้ใหม่</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== ห้อง 4: ห้องแสงสี ======== -->
+    <section class="panel" id="tab-studio" role="tabpanel" aria-label="ห้องแสงสี">
+      <div class="stage">
+        <div class="stage__head">
+          <a class="backbtn" href="#lobby" data-back="lobby">← ล็อบบี้</a>
+          <h3>🎨 ห้องแสงสี</h3>
+          <span class="badge badge--sun">สร้างสรรค์ · จังหวะและลูป</span>
+        </div>
+        <p class="banner" id="gHint">เลือกสีทางขวา แล้วแตะช่องในกรอบได้เลย ทุกการแตะจะเกิดเสียงด้วยนะ 🎵</p>
+        <p class="muted" style="font-size:14px;margin:8px 0 0">วิธีเล่น: เลือกสีแล้วแตะช่องในกรอบ กด “เล่นจังหวะ” เพื่อฟังเพลงที่หนูสร้าง</p>
+        <div class="studio" style="margin-top:16px">
+          <div class="canvasgrid" id="gGrid" aria-label="กระดานวาดแสงสี"></div>
+          <div>
+            <div class="palette" id="gPalette" aria-label="จานสี"></div>
+            <div style="height:14px"></div>
+            <div class="actgrid">
+              <button class="btn btn--teal btn--sm" id="gPlay" type="button">▶ เล่นจังหวะ</button>
+              <button class="btn btn--grape btn--sm" id="gQuiz" type="button">🧠 ทำตามแบบ</button>
+              <button class="btn btn--sun btn--sm" id="gSave" type="button">🖼️ เก็บภาพ</button>
+              <button class="btn btn--ghost btn--sm" id="gRandom" type="button">🎲 สุ่มภาพ</button>
+              <button class="btn btn--ghost btn--sm" id="gClear" type="button">🧹 ล้าง</button>
+              <button class="btn btn--ghost btn--sm" id="gFree" type="button">✏️ วาดอิสระ</button>
+            </div>
+          </div>
+        </div>
+        <h3 style="margin-top:24px">🖼️ แกลเลอรีของหนู</h3>
+        <div class="minigal" id="gGallery" aria-label="ภาพที่บันทึกไว้"></div>
+      </div>
+    </section>
+
+    <!-- ======== ห้อง 5: เรียงเรื่องราว ======== -->
+    <section class="panel" id="tab-story" role="tabpanel" aria-label="เรียงเรื่องราว">
+      <div class="stage">
+        <div class="stage__head">
+          <a class="backbtn" href="#lobby" data-back="lobby">← ล็อบบี้</a>
+          <h3>📚 เรียงเรื่องราว</h3>
+          <span class="badge badge--coral">ลำดับเหตุการณ์</span>
+          <span class="goal"><span id="tCount">ชุดที่ 1 / 6</span></span>
+        </div>
+        <p class="banner" id="tHint">เรื่องนี้อะไรเกิดก่อน อะไรเกิดทีหลัง? แตะการ์ดเรียงจากซ้ายไปขวา</p>
+        <p class="muted" style="font-size:14px;margin:8px 0 0">วิธีเล่น: แตะการ์ดเรียงจากซ้ายไปขวา ว่าอะไรเกิดก่อนและหลัง</p>
+        <div class="sortzone" style="margin-top:18px">
+          <div class="storyrow" id="tSlots" aria-label="ช่องเรียงลำดับ"></div>
+          <div class="storycards" id="tCards" aria-label="การ์ดเหตุการณ์"></div>
+          <button class="btn btn--ghost btn--sm" id="tRestart" type="button">🔄 เริ่มชุดนี้ใหม่</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== ห้อง 6: จับคู่ลูกโป่ง ======== -->
+    <section class="panel" id="tab-balloon" role="tabpanel" aria-label="จับคู่ลูกโป่ง">
+      <div class="stage">
+        <div class="stage__head">
+          <a class="backbtn" href="#lobby" data-back="lobby">← ล็อบบี้</a>
+          <h3>🎈 จับคู่ลูกโป่ง</h3>
+          <span class="badge badge--sun">ความจำ · การจับคู่</span>
+          <span class="goal"><span id="mCount">คู่ที่จับได้ 0 / 6</span></span>
+        </div>
+        <p class="banner" id="mHint">แตะลูกโป่งทีละใบ จำภาพให้ดี แล้วหาคู่ของมัน 🎈</p>
+        <p class="muted" style="font-size:14px;margin:8px 0 0">วิธีเล่น: แตะลูกโป่งสองใบ ถ้าภาพเหมือนกันคือจับคู่สำเร็จ เก็บให้ครบทั้ง 6 คู่</p>
+        <div class="memgrid" id="mGrid" aria-label="ลูกโป่งทั้งหมด" style="margin-top:18px"></div>
+        <div class="btn-row" style="margin-top:18px">
+          <button class="btn btn--ghost btn--sm" id="mRestart" type="button">🔄 เริ่มใหม่</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== ห้อง 7: บันไดดนตรี ======== -->
+    <section class="panel" id="tab-music" role="tabpanel" aria-label="บันไดดนตรี">
+      <div class="stage">
+        <div class="stage__head">
+          <a class="backbtn" href="#lobby" data-back="lobby">← ล็อบบี้</a>
+          <h3>🎵 บันไดดนตรี</h3>
+          <span class="badge">ฟังเสียง · ลำดับ</span>
+          <span class="goal"><span id="nCount">รอบที่ 1</span></span>
+        </div>
+        <p class="banner" id="nHint">กดปุ่มฟังทำนองก่อน แล้วแตะบันไดซ้ำตามที่ได้ยิน 🎧</p>
+        <p class="muted" style="font-size:14px;margin:8px 0 0">วิธีเล่น: ฟังเสียงบันไดที่เล่นให้ แล้วแตะบันไดซ้ำตามลำดับจากต่ำไปสูง</p>
+        <div class="notepads" id="nPads" aria-label="บันไดเสียง" style="margin-top:18px"></div>
+        <div class="btn-row" style="margin-top:18px">
+          <button class="btn btn--teal" id="nPlay" type="button">🎧 ฟังทำนอง</button>
+          <button class="btn btn--ghost btn--sm" id="nRestart" type="button">🔄 เริ่มรอบที่ 1</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== ห้อง 8: ตลาดนับของ ======== -->
+    <section class="panel" id="tab-count" role="tabpanel" aria-label="ตลาดนับของ">
+      <div class="stage">
+        <div class="stage__head">
+          <a class="backbtn" href="#lobby" data-back="lobby">← ล็อบบี้</a>
+          <h3>🍎 ตลาดนับของ</h3>
+          <span class="badge badge--leaf">การนับ · จำนวน</span>
+          <span class="goal"><span id="cCount">ข้อ 1 / 8</span></span>
+        </div>
+        <p class="banner" id="cHint">นับของในตะกร้า แล้วแตะตัวเลขให้ถูกจำนวน 🔢</p>
+        <p class="muted" style="font-size:14px;margin:8px 0 0">วิธีเล่น: ดูของที่โผล่มา แล้วแตะตัวเลขให้ตรงกับจำนวนที่เห็น</p>
+        <div class="cntray" id="cTray" aria-live="polite" style="margin-top:18px"></div>
+        <div class="numgrid" id="cChoices" aria-label="ตัวเลือกจำนวน" style="margin-top:18px"></div>
+        <div class="btn-row" style="margin-top:18px">
+          <button class="btn btn--ghost btn--sm" id="cRestart" type="button">🔄 เริ่มใหม่</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== ห้อง 9: ตามรอยรูปร่าง ======== -->
+    <section class="panel" id="tab-shape" role="tabpanel" aria-label="ตามรอยรูปร่าง">
+      <div class="stage">
+        <div class="stage__head">
+          <a class="backbtn" href="#lobby" data-back="lobby">← ล็อบบี้</a>
+          <h3>🔵 ตามรอยรูปร่าง</h3>
+          <span class="badge">รูปร่าง · รูปแบบ</span>
+          <span class="goal"><span id="hCount">ข้อ 1 / 8</span></span>
+        </div>
+        <p class="banner" id="hHint">ดูจังหวะรูปร่างที่ซ้ำกัน แล้วหาว่าช่อง “?” คือรูปไหน 🔍</p>
+        <p class="muted" style="font-size:14px;margin:8px 0 0">วิธีเล่น: ดูรูปร่างทั้งแถว แล้วหาว่าช่อง “?” ควรเป็นรูปไหน</p>
+        <div class="shaperow" id="hRow" style="margin-top:18px"></div>
+        <div class="shapechoices" id="hChoices" aria-label="ตัวเลือกรูปร่าง" style="margin-top:18px"></div>
+        <div class="btn-row" style="margin-top:18px">
+          <button class="btn btn--ghost btn--sm" id="hRestart" type="button">🔄 เริ่มใหม่</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== ห้อง 10: เขาวงกตเสียง ======== -->
+    <section class="panel" id="tab-maze" role="tabpanel" aria-label="เขาวงกตเสียง">
+      <div class="stage">
+        <div class="stage__head">
+          <a class="backbtn" href="#lobby" data-back="lobby">← ล็อบบี้</a>
+          <h3>🌀 เขาวงกตเสียง</h3>
+          <span class="badge badge--coral">นำทาง · ลำดับ</span>
+          <span class="goal"><span id="zCount">เดินแล้ว 0 ช่อง · ชนะ 0 ครั้ง</span></span>
+        </div>
+        <p class="banner" id="zHint">พากระต่ายน้อยเดินไปหาแครอท 🥕 ชนกำแพงไม่เป็นไรนะ</p>
+        <p class="muted" style="font-size:14px;margin:8px 0 0">วิธีเล่น: ใช้ลูกศรนำทางทีละช่อง ชนกำแพงไม่เป็นไร เดินไปจนถึงแครอท 🥕</p>
+        <div class="playzone" style="margin-top:14px">
+          <div class="boardwrap">
+            <div class="board board--maze" id="zGrid" aria-label="เขาวงกต"></div>
+          </div>
+          <div>
+            <div class="pad" id="zPad">
+              <button class="sp" type="button" tabindex="-1" aria-hidden="true"></button>
+              <button class="key" type="button" data-dir="up" aria-label="เดินขึ้น">⬆️</button>
+              <button class="sp" type="button" tabindex="-1" aria-hidden="true"></button>
+              <button class="key" type="button" data-dir="left" aria-label="เดินซ้าย">⬅️</button>
+              <button class="key" type="button" data-dir="down" aria-label="เดินลง">⬇️</button>
+              <button class="key" type="button" data-dir="right" aria-label="เดินขวา">➡️</button>
+            </div>
+            <div class="btn-row" style="margin-top:16px">
+              <button class="btn btn--ghost btn--sm" id="zRestart" type="button">🔄 เริ่มใหม่</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== ห้อง 11: อารมณ์ตัวอักษร ======== -->
+    <section class="panel" id="tab-word" role="tabpanel" aria-label="อารมณ์ตัวอักษร">
+      <div class="stage">
+        <div class="stage__head">
+          <a class="backbtn" href="#lobby" data-back="lobby">← ล็อบบี้</a>
+          <h3>🔤 อารมณ์ตัวอักษร</h3>
+          <span class="badge">ตัวอักษร · สังเกต</span>
+          <span class="goal"><span id="wCount">รอบที่ 1 / 6</span></span>
+        </div>
+        <p class="banner" id="wHint">มีตัวอักษรหนึ่งตัวที่ไม่เหมือนเพื่อน หาเจอไหม? 🔍</p>
+        <p class="muted" style="font-size:14px;margin:8px 0 0">วิธีเล่น: ดูแถวตัวอักษร แล้วแตะตัวที่ไม่เหมือนเพื่อน</p>
+        <div class="wordrow" id="wRow" style="margin-top:22px"></div>
+        <div class="btn-row" style="margin-top:18px">
+          <button class="btn btn--ghost btn--sm" id="wRestart" type="button">🔄 เริ่มใหม่</button>
+        </div>
+      </div>
+    </section>
+
+    <p class="muted center" style="margin-top:26px">
+      <a href="index.html">← กลับหน้าแรก</a> &nbsp;·&nbsp;
+      <a href="lessons.html">กิจกรรมเสริมแบบไม่ใช้จอ</a> &nbsp;·&nbsp;
+      <a href="parents.html">ดูคำอธิบายสำหรับผู้ปกครอง</a>
+    </p>
+  </div>
+</main>
+
+<script src="assets/js/app.js" defer></script>
+<script src="assets/js/games.js" defer></script>
+<script src="assets/js/rooms-extra.js" defer></script>
+<script src="assets/js/games-lobby.js" defer></script>
+</body>
+</html>

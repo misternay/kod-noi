@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" role="img" aria-label="น้องบอท เพื่อนหุ่นยนต์ของเด็ก ๆ">
+  <defs>
+    <linearGradient id="knBotHead" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#FFF1D6"/>
+    </linearGradient>
+    <linearGradient id="knBotBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#57CFD7"/>
+      <stop offset="1" stop-color="#2FA3AB"/>
+    </linearGradient>
+  </defs>
+
+  <ellipse cx="160" cy="294" rx="100" ry="15" fill="#E9DCC6"/>
+
+  <!-- เสาอากาศ -->
+  <line x1="160" y1="56" x2="160" y2="30" stroke="#2A9AA1" stroke-width="9" stroke-linecap="round"/>
+  <circle cx="160" cy="22" r="15" fill="#FFD93D" stroke="#E0B71B" stroke-width="4"/>
+
+  <!-- แขน -->
+  <rect x="26" y="148" width="36" height="70" rx="18" fill="#2A9AA1"/>
+  <rect x="258" y="148" width="36" height="70" rx="18" fill="#2A9AA1"/>
+  <circle cx="44" cy="226" r="19" fill="#FF8A5B"/>
+  <circle cx="276" cy="226" r="19" fill="#FF8A5B"/>
+
+  <!-- ตัว -->
+  <rect x="64" y="140" width="192" height="132" rx="46" fill="url(#knBotBody)"/>
+  <rect x="112" y="176" width="96" height="72" rx="22" fill="#FFF8EC"/>
+  <g transform="translate(160,212) scale(0.62)">
+    <path d="M0,-40 L9.4,-12.94 L38.04,-12.36 L15.22,4.94 L23.51,32.36 L0,16 L-23.51,32.36 L-15.22,4.94 L-38.04,-12.36 L-9.4,-12.94 Z" fill="#FFD93D"/>
+  </g>
+
+  <!-- หัว -->
+  <rect x="74" y="52" width="172" height="116" rx="46" fill="url(#knBotHead)" stroke="#2B2A4C" stroke-width="7"/>
+  <circle cx="122" cy="108" r="17" fill="#2B2A4C"/>
+  <circle cx="116" cy="102" r="5.5" fill="#FFFFFF"/>
+  <circle cx="198" cy="108" r="17" fill="#2B2A4C"/>
+  <circle cx="192" cy="102" r="5.5" fill="#FFFFFF"/>
+  <circle cx="95" cy="134" r="12" fill="#FF6B6B" opacity="0.35"/>
+  <circle cx="225" cy="134" r="12" fill="#FF6B6B" opacity="0.35"/>
+  <path d="M132 134 q28 22 56 0" stroke="#2B2A4C" stroke-width="8" fill="none" stroke-linecap="round"/>
+
+  <!-- ล้อ -->
+  <circle cx="106" cy="278" r="19" fill="#2B2A4C"/>
+  <circle cx="214" cy="278" r="19" fill="#2B2A4C"/>
+  <circle cx="106" cy="278" r="7" fill="#7BC6FF"/>
+  <circle cx="214" cy="278" r="7" fill="#7BC6FF"/>
+</svg>
